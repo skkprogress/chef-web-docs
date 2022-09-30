@@ -32,6 +32,7 @@ This section lists the recommended requirements for operating systems, virtual m
 {{< note >}}
 
 [Hardware Calculator](/calculator/automate_ha_hardware_calculator.xlsx) use this to check how much hardware you will need for your use-case.
+
 {{< /note >}}
 
 ## Hardware Requirements
@@ -60,10 +61,10 @@ The machine requirements based on the above assumptions are listed below:
 | Opensearch DB     | 3     | 2    | 8   | 58.9 GB            | m5.large         |/tmp=5%  /root=20%|
 | Bastion Machine   | 1     | 2    | 8   | 150 GB             | m5.large         |/tmp=5%  /root=20%|
 
-
 {{< note >}}
 
 - For **OpenSearch** and **PostgresSQL**, a minimum of three node clusters is required.
 - For production, OpenSearch volume size also depends on the number of nodes and frequency of Chef Infra Client runs and compliance scans.
 - Chef Automate bundle comes with chef-server version 14.15.10
+
 {{< /note >}}

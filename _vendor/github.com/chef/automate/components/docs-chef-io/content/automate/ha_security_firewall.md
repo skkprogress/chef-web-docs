@@ -26,10 +26,9 @@ The Chef Automate High Availability (HA) cluster requires multiple ports for the
 | Incoming | TCP 22, 9631, 443, 80 | TCP 22, 9631, 443, 80 | TCP 22, 9631, 7432, 5432, 9638<br/>UDP 9638 | TCP 22, 9631, 9200, 9300, 9638, 6432<br/>UDP 9638 |              |
 | Outgoing | TCP 22, 9631, 443, 80 | TCP 22, 9631, 443, 80 | TCP 22, 9631, 7432, 5432, 9638<br/>UDP 9638 | TCP 22, 9631, 9200, 9300, 9638, 6432<br/>UDP 9638 | TCP 22, 9631 |
 
-
-
 {{< note >}}
-- Custom SSH port is supported, but same port should be used accross all the machines.
+
+- Custom SSH port is supported, but same port should be used across all the machines.
   
 {{< /note >}}
 
@@ -46,4 +45,3 @@ The Chef Automate High Availability (HA) cluster requires multiple ports for the
 | TCP/UDP  | 9638        | Habitat gossip (UDP) |
 | TCP      | 7432        | HAProxy, which redirects to Postgresql Leader |
 | TCP      | 6432        | Re-elect Postgresql Leader, if Postgresql leader is down |
-
