@@ -18,7 +18,7 @@ product = ["client", "workstation", "automate"]
 
 Chef Automate is an enterprise platform that allows developers, operations, and security engineers to collaborate on application and infrastructure changes quickly and at scale. Chef Automate provides actionable insights across data centers and cloud providers, wherever your nodes live.
 
-Chef Automate is the center of the modern Chef platform, providing users with a single source of truth for infrastructure, security, and application automation. The comprehensive dashboard offers real-time views of your configuration management activity. Chef Automate comes bundled with the latest Chef Infra Server, providing the core tools you need to manage your enterprise infrastructure. Data collection is enabled by default, allowing your nodes to report activity in real time. This instance is free for 60 days, or you can bring your license (BYOL).
+Chef Automate is the center of the modern Chef platform, providing users with a single source of truth for infrastructure, security, and application automation. The comprehensive dashboard offers real-time views of your configuration management activity. Chef Automate comes bundled with the latest Chef Infra Server, providing the core tools you need to manage your enterprise infrastructure. Data collection is enabled by default, allowing your nodes to report activity in real time. This instance is free for 60 days, or you can bring your own license (BYOL).
 
 Use this instance with Chef Workstation installed on your laptop or a separate AWS instance.
 
@@ -42,14 +42,6 @@ AWS provides 5 VPCs for each region. If you require more VPCs, please contact [A
 
 1. Enter the following values for your deployment.
 
-     - **Stack Name:** Name of your stack. With this name, you can identify your cloud formation stack. (`example: Chef-Automate`)
-     - **VpcCIDR:** This field defines the IP address range (in CIDR notation) for your vpc (`example: 10.1.0.0/16`)
-     - **SubnetCIDR:** This field defines the IP address range (in CIDR notation) for your subnet in your VPC. This range should fall within your VPC CIDR range (`example: 10.1.0.0/24`)
-     - **SecurityGroupCIDRIP:** This field defines the IP address range (in CIDR notation) that is allowed access to the automate setup (`example: 10.1.0.0/24`, which means automate can be accessed only from `10.1.0.1  - 10.1.0.255`).
-     - **EC2RootVolumeSize:** Your root volume size. Replace the existing value with your desired size (`Default: 40`)
-     - **Instance Type:** Select instance type from the dropdown menu (`Minimum: t2.large`)
-     - **Prefix:** A name that is prefixed to resource names
-
     ![Enter required information and click next](/images/stack_details.png "Stack Details")
 
 {{< warning >}} The values mentioned above are just an example of what can be the possible values that can be entered. We do not recommend using these values as is. All these values need to be entered based on your infrastructure security principles and should not be taken as actual values. {{< /warning >}}
@@ -57,7 +49,7 @@ AWS provides 5 VPCs for each region. If you require more VPCs, please contact [A
 1. Configure stack options:
 
     - **Tags:** Create a tag that can be used to refer to your resources (for example, `Key: Name, Value: Chef-automate-stack`).
-    - **Permission:** You need to create an IAM role with `AmazonEC2FullAccess` to enable resource creation via the cloud formation template. Once created, you can select it in the dropdown menu.
+    - **Permission:** Create an IAM role with `AmazonEC2FullAccess` to enable resource creation using the cloud formation template. Once created, select the IAM role from the dropdown menu.
     - **Stack failure options:** AWS provides two option:
 
         - **Roll back all stack resources:** In case of failure, it should rollback all created resources (`Default: Roll back all stack resources`).
@@ -70,15 +62,13 @@ AWS provides 5 VPCs for each region. If you require more VPCs, please contact [A
         - **Stack Policy:** It is the JSON document that defines the update actions that can be performed on designated resources (`Default: No stack policy`).
         - **Rollback Configuration:** The user can set the alarm to monitor things during stack creation or update. Users must provide a threshold time and area of their cloud watch alarm. This alarm would get triggered if the threshold breaches. Users can enter multiple alarms as well. For more information, refer to [CFN Rollback Triggers](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html?icmpid=docs_cfn_console) documentation.
 
-    ![Enter rollback info and attach cloud watch alarms](/images/rollback_options.png "Rollback options")
-
-    - **Notification Options:** Users can create/attach their AWS SNS topic(Simple Notification Service), which would help them get all notifications about their stack creation process on their email.
+    - **Notification Options:** Create or attach an AWS Simple Notification Service (SNS), which would help them get all notifications about their stack creation process on their email.
 
     ![Enter SNS topic for notifications](/images/notification_options.png "Notification options")
 
     - **Stack Creation Options:** It has two options:
 
-        1. **Timeout:** If specified and stack creation is not completed in that time, rollback will happen
+        1. **Timeout:** If specified and stack creation is not completed in that time, the stack rollback will happen.
         2. **Termination Protection:** You cannot delete the stack directly if enabled. You have to first update it to disabled to delete it.
 
     Select **Next** and create your Chef Automate deployment. This process can take several minutes.
